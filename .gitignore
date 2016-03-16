@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+
+  int array[100], n, c, d, swap;
+  srand(time(NULL));
+
+  //int a =sizeof(array)/sizeof(array[0]);
+
+  //printf("%d\n",a);
+  printf("Dizi eleman sayisini giriniz\n");
+  scanf("%d", &n);
+
+  printf("%d Eleman giriniz \n", n);
+
+  for (c = 0; c < n; c++)
+     array[c]=rand()%1000;
+
+  clock_t start , stop;
+  start=clock();
+  for (c = 0 ; c < ( n - 1 ); c++)
+  {
+    for (d = 0 ; d < n - c - 1; d++)
+    {
+      if (array[d] > array[d+1])
+      {
+        swap       = array[d];
+        array[d]   = array[d+1];
+        array[d+1] = swap;
+      }
+    }
+  }
+
+  stop=clock();
+  printf ("siralama suresi=\n", stop-start);
+  printf("Dizinin siralanmis hali:\n");
+
+  for ( c = 0 ; c < n ; c++ )
+     printf("%d\n", array[c]);
+
+  return 0;
+}
