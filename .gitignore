@@ -6,7 +6,9 @@
 int main()
 {
 
-  int array[100], n, c, d, swap;
+  int karsilastirma=0;
+  int yerdegistirme=0;
+  int array[1000], n, c, d, swap;
   srand(time(NULL));
 
   //int a =sizeof(array)/sizeof(array[0]);
@@ -24,10 +26,13 @@ int main()
   start=clock();
   for (c = 0 ; c < ( n - 1 ); c++)
   {
+
     for (d = 0 ; d < n - c - 1; d++)
     {
+      karsilastirma+=1;
       if (array[d] > array[d+1])
       {
+        yerdegistirme+=1;
         swap       = array[d];
         array[d]   = array[d+1];
         array[d+1] = swap;
@@ -36,11 +41,17 @@ int main()
   }
 
   stop=clock();
-  printf ("siralama suresi=\n", stop-start);
+
+  double elapsed = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC;
+
+
   printf("Dizinin siralanmis hali:\n");
 
   for ( c = 0 ; c < n ; c++ )
      printf("%d\n", array[c]);
-
+  printf ("siralama suresi= %f \n", elapsed);
+  printf ("karsilastirma sayisi= %d \n", karsilastirma);
+  printf ("yerdegistirme sayisi= %d \n", yerdegistirme);
   return 0;
+
 }
